@@ -1,199 +1,269 @@
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-	
+
 	<style>
-	  blockquote{
-		background-color: pink;
-		padding: 2px;
-	  }
+		blockquote {
+			background-color: pink;
+			padding: 2px;
+		}
 	</style>
 
-	<title>NORTH Server</title>
+	<title>NORTH App</title>
 </head>
+
 <body>
 
 	<nav>
 		<div class="nav-wrapper cyan lighten-1">
-			<a href="#" class="brand-logo center">Tutorial for the NORTH Server App</a>            
+			<a href="#" class="brand-logo center">Tutorial for the NORTH App</a>
 		</div>
 	</nav>
-	
+
 	<div class="row">
-		<div class="col offset-s1 s9" id="bodybox">          
+		<div class="col offset-s1 s9" id="bodybox">
 
-		  <div id="submit_seq" class="section scrollspy">
-			  <div class="section">
-				<blockquote><h5>Submitting Gene Sequence</h5></blockquote>
-				<p>The user can submit the protein sequence of the query gene (a sample protein sequence is provided as example)</p>
-				<img class="responsive-img" src="gifs/submit_seq.gif">
-			  </div>
+			<div id="select_model" class="section scrollspy">
+				<div class="section">
+					<blockquote>
+						<h5>Selecting the Model</h5>
+					</blockquote>
+					<p>Start querying for orthologs by selecting a model (if no models are present please train a model first)</p>
+					<img class="responsive-img" src="gifs/select_model.gif">
+				</div>
 			</div>
 			<div class="divider"></div>
 
-		  <div id="submit_id" class="section scrollspy">
-			  <div class="section">
-				<blockquote><h5>Submitting UniProt ID</h5></blockquote>
-				<p>Alternatively, the user can submit the UniProt ID of the query gene (a sample UniProt ID is provided as example)</p>
-				<img class="responsive-img" src="gifs/submit_id.gif">
-			  </div>
+			<div id="submit_seq" class="section scrollspy">
+				<div class="section">
+					<blockquote>
+						<h5>Submitting Gene Sequence</h5>
+					</blockquote>
+					<p>The user can submit the protein sequence of the query gene (a sample protein sequence is provided as example)</p>
+					<img class="responsive-img" src="gifs/submit_seq.gif">
+				</div>
 			</div>
 			<div class="divider"></div>
 
-		  <div id="submit_fasta" class="section scrollspy">
-			  <div class="section">
-				<blockquote><h5>Uploading Fasta File</h5></blockquote>
-				<p>The user can also upload the fasta file of the query gene.</p>
-				<img class="responsive-img" src="gifs/submit_fasta.gif">
-			  </div>
-			</div>
-			<div class="divider"></div>
-
-		  <div id="submit" class="section scrollspy">
-			  <div class="section">
-				<blockquote><h5>Submitting the Query</h5></blockquote>
-				<p>After providing the gene, the user can start the execution of Ortholog query.</p>
-				<img class="responsive-img" src="gifs/submit.gif">
-			  </div>
+			<div id="submit" class="section scrollspy">
+				<div class="section">
+					<blockquote>
+						<h5>Submitting the Query</h5>
+					</blockquote>
+					<p>After providing the gene, the user can start the execution of Ortholog query.</p>
+					<img class="responsive-img" src="gifs/submit.gif">
+				</div>
 			</div>
 			<div class="divider"></div>
 
 			<div id="results" class="section scrollspy">
-			  <div class="section">
-				<blockquote><h5>Viewing the Orthologs</h5></blockquote>
-				<p>After completing the computations, the orthologous genes of the query gene will be provided.</p>
-				<img class="responsive-img" src="gifs/results.gif">
-			  </div>
-			</div>
-			<div class="divider"></div>
-			
-			<div id="slider_table" class="section scrollspy">
-			  <div class="section">
-				<blockquote><h5>Changing Page Using Slider</h5></blockquote>
-				<p>Using the slider the user can navigate through the orthologs.</p>
-				<img class="responsive-img" src="gifs/slider_table.gif">
-			  </div>
-			</div>
-			<div class="divider"></div>
-
-			<div id="input_table" class="section scrollspy">
-			  <div class="section">
-				<blockquote><h5>Navigating to Specific Page</h5></blockquote>
-				<p>Also the user can go to a specific page directly.</p>
-				<img class="responsive-img" src="gifs/input_table.gif">
-			  </div>
+				<div class="section">
+					<blockquote>
+						<h5>Viewing the Orthologs</h5>
+					</blockquote>
+					<p>After completing the computations, the orthologous genes of the query gene will be provided. Using the slider the user
+						can navigate through the orthologs. Also the user can go to a specific page directly.
+					</p>
+					<img class="responsive-img" src="gifs/results.gif">
+				</div>
 			</div>
 			<div class="divider"></div>
 
 			<div id="search" class="section scrollspy">
-			  <div class="section">
-				<blockquote><h5>Searching Orthologs</h5></blockquote>
-				<p>The user can search from the list of orthologous genes a specific gene.</p>
-				<img class="responsive-img" src="gifs/search.gif">
-			  </div>
+				<div class="section">
+					<blockquote>
+						<h5>Searching from the Orthologs</h5>
+					</blockquote>
+					<p>The user can search from the list of orthologous genes a specific gene. The user can search using patterns of multiple
+						filters namely, Gene Name, Protein Name, Organism and UniProt ID. The seach filters can be cleared, which will revert
+						to the list of all the orthologs.</p>
+					<img class="responsive-img" src="gifs/search.gif">
+				</div>
 			</div>
 			<div class="divider"></div>
 
-			<div id="search2" class="section scrollspy">
-			  <div class="section">
-				<blockquote><h5>Searching with Multiple Filters</h5></blockquote>
-				<p>The user can search using patterns of multiple filters namely, Gene Name, Protein Name, Organism and UniProt ID.</p>
-				<img class="responsive-img" src="gifs/search2.gif">
-			  </div>
+			<div id="navigation" class="section scrollspy">
+				<div class="section">
+					<blockquote>
+						<h5>Navigating Through the App</h5>
+					</blockquote>
+					<p>The user can navigate through the app using the side navigation bar, and use the various features.</p>
+					<img class="responsive-img" src="gifs/navigation.gif">
+				</div>
 			</div>
 			<div class="divider"></div>
 
-			<div id="clear_filter" class="section scrollspy">
-			  <div class="section">
-				<blockquote><h5>Clearing Search Filters</h5></blockquote>
-				<p>The seach filters can be cleared, which will revert to the list of all the orthologs.</p>
-				<img class="responsive-img" src="gifs/clear_filter.gif">
-			  </div>
-			</div>
-			<div class="divider"></div>
+			<div id="models_page" class="section scrollspy">
+					<div class="section">
+						<blockquote>
+							<h5>Viewing the Models</h5>
+						</blockquote>
+						<p>In the 'View Models' section, the user can view the trained models, read the model information, navigate to the model database or even train new models.</p>
+						<img class="responsive-img" src="gifs/models_page.gif">
+					</div>
+				</div>
+				<div class="divider"></div>
+	
+				<div id="database_page" class="section scrollspy">
+						<div class="section">
+							<blockquote>
+								<h5>Viewing the Databases</h5>
+							</blockquote>
+							<p>The users can view the various clusters of the model databases. A similar search functionality is also present.</p>
+							<img class="responsive-img" src="gifs/database_page.gif">
+						</div>
+					</div>
+					<div class="divider"></div>
+		
+					<div id="select_folder" class="section scrollspy">
+							<div class="section">
+								<blockquote>
+									<h5>Training a New Model</h5>
+								</blockquote>
+								<p>The users can start training the model by selecting the folder containing the fasta files of the orthologous clusters (also the optional 'Outliers.fasta' file).</p>
+								<img class="responsive-img" src="gifs/select_folder.gif">
+							</div>
+						</div>
+						<div class="divider"></div>
+					
+						<div id="invalid_folder" class="section scrollspy">
+								<div class="section">
+									<blockquote>
+										<h5>Providing an Invalid Folder</h5>
+									</blockquote>
+									<p>However, if the user selects an invalid folder, an error message will be shown.</p>
+									<img class="responsive-img" src="gifs/invalid_folder.gif">
+								</div>
+							</div>
+							<div class="divider"></div>
+						
+							<div id="train_metadata" class="section scrollspy">
+									<div class="section">
+										<blockquote>
+											<h5>Assigning Model Parameters and Information</h5>
+										</blockquote>
+										<p>After selecting an appropriate folder, the user should specify the model parameters and other informations.</p>
+										<img class="responsive-img" src="gifs/train_metadata.gif">
+									</div>
+								</div>
+								<div class="divider"></div>
+							
 
-			<div id="outlier" class="section scrollspy">
-			  <div class="section">
-				<blockquote><h5>Identifying Outlier Genes</h5></blockquote>
-				<p>If the user inputs a gene that has no orthologs in NORTH database, NORTH will be able to identify that gene as an outlier gene.</p>
-				<img class="responsive-img" src="gifs/outlier.gif">
-			  </div>
-			</div>
+								<div id="train_progress" class="section scrollspy">
+										<div class="section">
+											<blockquote>
+												<h5>Starting Training</h5>
+											</blockquote>
+											<p>Finally, the user can start training the model</p>
+											<img class="responsive-img" src="gifs/train_progress.gif">
+										</div>
+									</div>
+									<div class="divider"></div>
+		
 
 		</div>
 
 
 		<div class="col hide-on-small-only m3 l2">
-		  <ul class="section table-of-contents">
-			<li><a href="#submit_seq">Submitting Gene Sequence</a></li>
-			<li><a href="#submit_id">Submitting UniProt ID</a></li>
-			<li><a href="#submit_fasta">Uploading Fasta File</a></li>
-			<li><a href="#submit">Submitting the Query</a></li>
-			<li><a href="#results">Viewing the Orthologs</a></li>
-			<li><a href="#slider_table">Changing Page Using Slider</a></li>
-			<li><a href="#input_table">Navigating to Specific Page</a></li>
-			<li><a href="#search">Searching Orthologs</a></li>
-			<li><a href="#search2">Searching with Multiple Filters</a></li>
-			<li><a href="#clear_filter">Clearing Search Filters</a></li>
-			<li><a href="#outlier">Identifying Outlier Genes</a></li>
-		  </ul>
+			<ul class="section table-of-contents">
+				<li>
+					<a href="#select_model">Selecting the Model</a>
+				</li>
+				<li>
+					<a href="#submit_seq">Submitting Gene Sequence</a>
+				</li>
+				<li>
+					<a href="#submit">Submitting the Query</a>
+				</li>
+				<li>
+					<a href="#results">Viewing the Orthologs</a>
+				</li>
+				<li>
+					<a href="#search">Searching from the Orthologs</a>
+				</li>
+				<li>
+					<a href="#navigation">Navigating Through the App</a>
+				</li>
+				<li>
+					<a href="#models_page">Viewing the Models</a>
+				</li>
+				<li>
+					<a href="#database_page">Viewing the Databases</a>
+				</li>
+				<li>
+					<a href="#select_folder">Training a New Model</a>
+				</li>
+				<li>
+					<a href="#invalid_folder">Providing an Invalid Folder</a>
+				</li>
+				<li>
+					<a href="#train_metadata">Assigning Model Parameters and Information</a>
+				</li>
+				<li>
+					<a href="#train_progress">Starting Training</a>
+				</li>
+
+
+			</ul>
 		</div>
-	  </div>
-	
+	</div>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>    
-	
-   <script>       
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+
+	<script>       
 		function fixmetotop() {
-		  var fixmeTop = $('.table-of-contents').offset().top;
-		  $(window).scroll(function() {
-			//aktuelle Scrollposition auslesen
-			var currentScroll = $(window).scrollTop(),
-			//+1em rechnen
-			currentScroll = currentScroll + 15,
-			actualBottom = $('#bodybox').offset().top + $('#bodybox').outerHeight(true),
-			heightSideNav = $('.table-of-contents').outerHeight(true);
-			if (currentScroll >= fixmeTop && currentScroll <= actualBottom - heightSideNav) {
-			  //CSS für fixed setzen
-			  $('.table-of-contents').css({
-				position: 'fixed',
-				top: '0',
-				bottom: ''
-			  });
-			} else {
-			  if(currentScroll >= actualBottom - heightSideNav) {
-				$('.table-of-contents').css({
-				  position: 'fixed',
-				  bottom: '0',
-				  top: ''
-				});
-			  } else {
-				//CSS für nicht fixed setzen
-				$('.table-of-contents').css({
-				  position: 'static',
-				  bottom: '',
-				  top: ''
-				});
-			  }
-			}
-		  });
+			var fixmeTop = $('.table-of-contents').offset().top;
+			$(window).scroll(function () {
+				//aktuelle Scrollposition auslesen
+				var currentScroll = $(window).scrollTop(),
+					//+1em rechnen
+					currentScroll = currentScroll + 15,
+					actualBottom = $('#bodybox').offset().top + $('#bodybox').outerHeight(true),
+					heightSideNav = $('.table-of-contents').outerHeight(true);
+				if (currentScroll >= fixmeTop && currentScroll <= actualBottom - heightSideNav) {
+					//CSS für fixed setzen
+					$('.table-of-contents').css({
+						position: 'fixed',
+						top: '0',
+						bottom: ''
+					});
+				} else {
+					if (currentScroll >= actualBottom - heightSideNav) {
+						$('.table-of-contents').css({
+							position: 'fixed',
+							bottom: '0',
+							top: ''
+						});
+					} else {
+						//CSS für nicht fixed setzen
+						$('.table-of-contents').css({
+							position: 'static',
+							bottom: '',
+							top: ''
+						});
+					}
+				}
+			});
 		}
 		$(document).ready(function () {
-		  var fillLorepIpsum = function () {
-			for (var i = 0; i < 1000; i++) {
-			  $("#loremIpsum1").append("content1 ");
-			  $("#loremIpsum2").append("content2 ");
-			  $("#loremIpsum3").append("content3 ");
+			var fillLorepIpsum = function () {
+				for (var i = 0; i < 1000; i++) {
+					$("#loremIpsum1").append("content1 ");
+					$("#loremIpsum2").append("content2 ");
+					$("#loremIpsum3").append("content3 ");
+				}
 			}
-		  }
-		  fillLorepIpsum();
-		  fixmetotop();
-		  $('.scrollspy').scrollSpy();
+			fillLorepIpsum();
+			fixmetotop();
+			$('.scrollspy').scrollSpy();
 		});
-   </script>
+	</script>
 
 </body>
+
 </html>
