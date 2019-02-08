@@ -34,3 +34,7 @@ The NORTH app can be used by the following command:
 ```
 npm start
 ```
+
+## Tutorial
+
+A complete, step by step tutorial of NORTH app can be found [here](https://nibtehaz.github.io/NORTH-app/)
