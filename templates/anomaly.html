@@ -1,0 +1,60 @@
+{% extends 'template.html' %} 
+
+
+{% block headcss %}
+<style>
+    td {
+        padding: 5px;
+    }
+
+
+    #page_no {
+        color: teal;
+    }
+</style>
+
+{% endblock %} 
+
+
+{%block bodytype%}
+
+<body class="bodyAnomaly"></body>
+
+{% endblock %} 
+
+
+{% block bodycontent %}
+
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4 style="text-align:center">Submitted Gene Sequence</h4>
+        <div class="form-group">
+            <textarea class="form-control" id="sequenceArea" disabled>{{ seq }}</textarea>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+</div>
+
+
+<div class="white-text center" style="padding-bottom:10%;padding-top:10%">
+    <div class="container">
+        <h1>Outlier Gene</h1>
+        <h3>The gene you have submitted has no orthologs in the database</h3>
+    </div>
+</div>
+
+<h3 class="center">
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">View the Sequence</a>
+</h3>
+
+
+<script>
+
+    $(document).ready(function () {
+        $('.modal').modal();
+    });
+</script> 
+
+{% endblock %}

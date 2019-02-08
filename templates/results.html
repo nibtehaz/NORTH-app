@@ -1,0 +1,229 @@
+{% extends 'template.html' %} 
+
+{% block headcss %}
+<style>
+    td {
+        padding: 5px;
+    }
+
+    #total_page {
+        color: darkslategray;
+    }
+
+    #page_no {
+        color: teal;
+    }
+</style>
+{% endblock %} 
+
+{% block headjs %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/results.js') }}"></script> 
+{% endblock %} 
+
+
+{%block bodytype%}
+<body class="bodyResult" onload="loaded()">
+{% endblock %} 
+    
+    
+{% block bodycontent %}
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4 style="text-align:center">Submitted Gene Sequence</h4>
+        <div class="form-group">
+            <textarea class="form-control" id="sequenceArea" disabled>{{ seq }}</textarea>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+</div>
+
+<div id="search_modal" class="modal">
+    <div class="modal-content">
+        <h4>Search Genes</h4>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="gene_name" type="text">
+                <label for="gene_name">Gene Name</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="protein_name" type="text">
+                <label for="protein_name">Protein Name</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="organism" type="text">
+                <label for="organism">Organism</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="uniprot_id" type="text">
+                <label for="uniprot_id">UniProt ID</label>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick="search_fields()">Filter</a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick="clear_inps()">Cancel</a>
+    </div>
+</div>
+
+<div class="row  scrl2" style="margin-left:20px;margin-right:20px">
+    <div class="col s12">
+
+        <div class="row">
+
+            <div class="col s4">
+                <h4>
+                    Predicted Orthologs
+                    <a class="btn-floating btn-large waves-effect waves-light blue modal-trigger" href="#search_modal">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </a>
+                </h4>
+            </div>
+
+            <div class="col s5"></div>
+
+
+            <div class="col s3">
+                <h3 class="center">
+                    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">View the Sequence</a>
+                </h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s2" id="filts0">
+
+            </div>
+
+            <div class="col s2" id="filts1">
+
+            </div>
+
+            <div class="col s2" id="filts2">
+
+            </div>
+
+            <div class="col s2" id="filts3">
+
+            </div>
+
+            <div class="col s2" id="filts4">
+
+            </div>
+
+            <div class="col s2" id="clr_filts">
+
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col s4">
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="1" id="page_no" type="text" onchange="changePage()">
+                        <label for="page_no">Current Page</label>
+
+                    </div>
+
+                    <div class="input-field col s6">
+                        <input disabled id="total_page" type="text">
+                        <label for="total_page" style="color:darkslategray">Total Page</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s8">
+
+                <form action="#">
+                    <p class="range-field">
+                        <input type="range" id="slider" min="1" max="250" value=1 onmouseup="rangeSlide()" />
+                    </p>
+                </form>
+
+            </div>
+
+        </div>
+
+        <table class="striped light-blue accent-1" style="font-size:14px;margin-bottom: 50px">
+            <thead class="cyan accent-4 white-text">
+                <tr>
+                    <th width="10%">Gene Name</th>
+                    <th width="56%">Protein Name</th>
+                    <th width="16%">Organism</th>
+                    <th width="11%">UniProt id</th>
+                    <th width="6%">Link</th>
+                </tr>
+            </thead>
+
+            <tbody id="tableBody">
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+    </div>
+</div>
+
+</div>
+
+
+<script>
+    function loaded() {
+        init('{{ cluster }}', '{{model}}');
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('.modal').modal();
+    });
+</script> 
+{% endblock %}

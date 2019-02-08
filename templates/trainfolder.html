@@ -1,0 +1,44 @@
+{% extends 'template.html' %} 
+
+{% block headjs %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/trainfolder.js') }}"></script> 
+{% endblock %} 
+
+
+{%block bodytype%}
+<body class="bodyTrainFolder">
+{% endblock %} 
+
+{% block bodycontent %} 
+
+    {% if error %}
+    <script>
+        alert('Please create a model first to use the application');
+    </script> 
+    {% endif %}
+
+    <h1 style="text-align:center">Train Model</h1>
+
+    <h1 style="text-align:center">
+        <a onclick="open_file_dialog()" class="btn"> Select Data Folder</a>
+    </h1>
+
+    <h3 id="nmclstr" style="text-align:center;margin-top:100px"></h3>
+    <div class="container">
+        <div class="row" id="lstclstr">
+        </div>
+    </div>
+    <h5 id="otlr" style="text-align:center"></h5>
+
+
+    <div class="row" id="inptblk" style="visibility:hidden">
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('.modal').modal();
+        });
+    </script> 
+    
+{% endblock %}

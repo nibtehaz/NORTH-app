@@ -1,0 +1,95 @@
+{% extends 'template.html' %} 
+
+
+{% block headcss %}
+
+<style>
+    .row {
+        margin: 0;
+    }
+</style>
+
+{% endblock %} 
+
+
+{% block headjs %}
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/models.js') }}"></script> 
+
+{% endblock %} 
+
+
+{%block bodytype%}
+
+<body class="bodyModels" onload="init()">
+
+{% endblock %} 
+
+
+{% block bodycontent %}
+
+<div class="container">
+
+    <ul class="collection" id="list_models">
+        <li class="collection-item">
+            <div class="row">
+                <div class="col s8">
+                    <a class="btn-flat transparent black-text">Model</a>
+                </div>
+
+                <div class="col s2">
+                    <a class="waves-effect waves-light btn pink">Details</a>
+                </div>
+
+                <div class="col s2">
+                    <a class="waves-effect waves-light btn light-blue accent-3">Database</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <h2 style="text-align: center">
+        <a class="waves-effect waves-light btn pink lighten-1" href="/trainfolder">Train New Model</a>
+    </h2>
+
+</div>
+
+<div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4 id="model_name_modal"></h4>
+
+        <div class="form-group">
+            <textarea class="form-control" id="model_details_modal"></textarea>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <a onclick="confirm()" class="waves-effect waves-green btn">Update
+            <i class="far fa-edit"></i>
+        </a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+</div>
+
+<div id="modal2" class="modal">
+    <div class="modal-content">
+        Do you want to update the model details ?
+    </div>
+    <div class="modal-footer">
+        <a onclick="update()" class="waves-effect waves-green btn-flat">Yes </a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+</div>
+
+<div id="modal3" class="modal">
+    <div class="modal-content">
+        Do you want to delete the model '
+        <span id="delmdlnm"></span>' ?
+    </div>
+    <div class="modal-footer">
+        <a onclick="delete_()" class="waves-effect waves-green btn-flat">Yes </a>
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+</div>
+
+{% endblock %}

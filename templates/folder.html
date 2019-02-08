@@ -1,0 +1,59 @@
+{% extends 'template.html' %} 
+
+{%block bodytype%}
+
+<body class="bodyIndex">
+    
+{% endblock %} 
+
+
+{% block bodycontent %}
+
+
+<h1>Please Select the Folder Containing the Fasta Files</h1>
+
+<form action="{{url_for('trainfolder')}}" id='form_control' name='form_control' method="POST">
+    <div class="file-field input-field">
+        <div class="btn">
+            <span>Folder Path</span>
+            <input type="file" name="file">
+        </div>
+        <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+        </div>
+    </div>
+</form>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large blue btn modal-trigger pulse">
+        <i class="fas fa-question"></i>
+    </a>
+</div>
+
+<a onclick="submit()">
+    <button style="margin-left: 45%;margin-bottom:4%;margin-top:1%" class="btn waves-effect waves-light btn-large" type="submit">Submit
+        <i class="material-icons right">send</i>
+    </button>
+</a>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.fixed-action-btn');
+        var instances = M.FloatingActionButton.init();
+    });
+
+</script> 
+
+{% if err %}
+<script>
+    alert("Please Upload a valid '.fasta' file");
+</script> 
+{% endif %}
+
+<script>
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, {});    
+</script> 
+
+{% endblock %}

@@ -1,0 +1,116 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NORTH</title>
+
+    <link href="{{ url_for('static', filename='css/materialize.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/hamburgers.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/Cairo.css') }}" rel="stylesheet"> 
+    
+{% block headcss %} 
+
+{% endblock %}
+
+
+<script>window.$ = window.jQuery = require('jquery');</script>
+<!--script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script-->
+<script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
+
+<script>
+
+    function goChrome(url) {
+        $.get(`http://127.0.0.1:3000/gochrome?siteurl=${url}`, function (data, status) {
+
+            console.log('done');
+
+        });
+    }
+
+</script> 
+
+{% block headjs %} 
+
+{% endblock %}
+
+</head>
+
+
+{% block bodytype %} 
+
+{% endblock %}
+
+<h1 style="text-align:center">{{page_name}}</h1>
+
+<ul id="slide-out" class="sidenav">
+    <li>
+        <div class="user-view">
+            <div class="background banner" style="text-align:center">
+                <h1>NORTH</h1>
+            </div>
+            <div style="height:150px"></div>
+
+        </div>
+    </li>
+    <li {% if 'Ortholog Query'==p age_name %} class="cyan accent-2" {% endif %}>
+        <a href="/">Make Query</a>
+    </li>
+    <li {% if 'Trained Models'==p age_name %} class="teal accent-3" {% endif %}>
+        <a href="/view_models">View Models</a>
+    </li>
+    <li {% if 'Ortholog Databases'==p age_name %} class="light-blue accent-3" {% endif %}>
+        <a href="/view_databases">View Ortholog Databases</a>
+    </li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li>
+        <a onclick="goChrome('https://nibtehaz.github.io/NORTH/')">Project Website</a>
+    </li>
+    <li>
+        <a>Publication</a>
+    </li>
+    <li>
+        <a onclick="goChrome('https://github.com/nibtehaz/NORTH-app')">Source Codes</a>
+    </li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li>
+        <a onclick="goChrome('mailto:1017052037@grad.cse.buet.ac.bd?Subject=NORTH%20Project')">Send Feedback</a>
+    </li>
+    <li>
+        <a onclick="goChrome('https://github.com/nibtehaz/NORTH-app/issues')">Issues and Bug Report</a>
+    </li>
+    <li>
+        <a onclick="goChrome('https://nibtehaz.github.io/NORTH-app/')">Tutorial</a>
+    </li>
+    <li>
+        <a>Credits</a>
+    </li>
+</ul>
+
+<a href="#" data-target="slide-out" class="sidenav-trigger" style="position: fixed;left: 0px;top: 0px;z-index: 10;">
+    <button class="hamburger" type="button">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+</a>
+
+{% block bodycontent %} 
+
+{% endblock %}
+
+<script>
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, {});   
+</script>
+
+</body>
+
+</html>

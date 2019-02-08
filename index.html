@@ -1,0 +1,39 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NORTH</title>
+    <link href="static/css/materialize.min.css" rel="stylesheet">
+    <link href="static/css/style.css" rel="stylesheet">
+</head>
+
+<body class="banner">
+    <div style="padding-top:80px;padding-bottom:3%;padding-left: 30px">
+        <h1>NORTH</h1>
+        <h2>a highly accurate and scalable Naive bayes based ORTHologous gene clustering algorithm</h2>
+    </div>
+
+    <div class="container">
+        <div class="progress white">
+            <div class="indeterminate teal accent-3"></div>
+        </div>
+    </div>
+
+
+    <script>
+
+        var interval = setInterval(function () {
+
+            $.get("http://127.0.0.1:5000/models", function (data, stat) {
+                console.log(data);
+            });
+
+        }, 1000);
+
+    </script>
+
+</body>
+
+</html>

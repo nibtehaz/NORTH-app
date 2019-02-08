@@ -1,0 +1,165 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NORTH</title>
+
+    <link href="{{ url_for('static', filename='css/materialize.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/hamburgers.min.css') }}" rel="stylesheet">
+</head>
+
+<body class="bodyIndex">
+
+    <ul id="slide-out" class="sidenav">
+        <li>
+            <div class="user-view">
+                <div class="background banner" style="text-align:center">
+                    <h1>NORTH</h1>
+                </div>
+                <div style="height:150px"></div>
+
+            </div>
+        </li>
+        <li>
+            <a>Make Query</a>
+        </li>
+        <li>
+            <a>View Models</a>
+        </li>
+        <li>
+            <a>View Ortholog Databases</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li>
+            <a>Project Website</a>
+        </li>
+        <li>
+            <a>Publication</a>
+        </li>
+        <li>
+            <a>Source Codes</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li>
+            <a>Send Feedback</a>
+        </li>
+        <li>
+            <a>Issues and Bug Report</a>
+        </li>
+    </ul>
+
+    <a href="#" data-target="slide-out" class="sidenav-trigger" style="position: fixed;left: 0px;top: 0px;z-index: 10;">
+        <button class="hamburger" type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>
+    </a>
+
+
+
+    <div class="banner" style="padding-top:80px;padding-bottom:3%;padding-left: 30px">
+        <h1>NORTH</h1>
+        <h2>a highly accurate and scalable Naive bayes based ORTHologous gene clustering algorithm</h2>
+    </div>
+
+    <div class="row" style="margin-left:20px;margin-right:20px">
+
+        <div class="col s8 offset-s2">
+            <h4>
+                Input Gene Sequence
+            </h4>
+
+            <form action="#" id='form_control' name='form_control'>
+                <input type='hidden' name='family' value="all" />
+                <input type='hidden' name='nClasses' value="250" />
+                <input type='hidden' name='K' value="5" />
+
+                <p>
+                    <label>
+                        <input name="group1" type="radio" id="radio1" checked onclick="rdoBtn(this.id)" />
+                        <span style="color:black;font-size: 150%;">Protein Sequence</span>
+                    </label>
+
+                    <!--&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                            <label><input name="group1" type="radio" id="radio2" onclick="rdoBtn(this.id)"/>
+                                    <span style="color:black;font-size: 150%;">Fasta</span>
+                            </label>-->
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <label>
+                        <input name="group1" type="radio" id="radio3" onclick="rdoBtn(this.id)" />
+                        <span style="color:black;font-size: 150%;">UniProt ID</span>
+                    </label>
+                    <div class="form-group">
+                        <textarea class="form-control" id="sequenceArea" placeholder="MFLGGTISTPPASLRLRSTLNPQNAVTQSSSQATFPAAMQRKPPSYSISDEDLESRGFLLRRTTEGLNLDQLNSVFAAVGFPRRDTAKIEVALQHTDALLWVEYEKTRRPVAFARATGDGVFNAIIWDVVVDPSFQSCGLGKAVMERLIEDLQVKGICNIALYSEPRVLGFYRPLGFVSDPDGIKGMVFIRKQRNKK"></textarea>
+                    </div>
+                </p>
+                <p>
+                    <label>
+                        <input name="group1" type="radio" id="radio4" onclick="rdoBtn(this.id)" />
+                        <span style="color:black;font-size: 150%;">Upload Fasta File</span>
+                    </label>
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>File</span>
+                            <input type="file" name="file">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large blue btn modal-trigger pulse">
+            <i class="fas fa-question"></i>
+        </a>
+    </div>
+
+    <a onclick="submit()">
+        <button style="margin-left: 45%;margin-bottom:4%;margin-top:1%" class="btn waves-effect waves-light btn-large" type="submit">Submit
+            <i class="material-icons right">send</i>
+        </button>
+    </a>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.fixed-action-btn');
+            var instances = M.FloatingActionButton.init();
+        });
+
+    </script> 
+    
+    {% if err %}
+    <script>
+        alert("Please Upload a valid '.fasta' file");
+    </script> 
+    {% endif %}
+
+    <script>
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems, {});    
+    </script>
+
+    <footer class="page-footer">
+        <div class="container" style="padding-bottom:30px;">
+
+        </div>
+    </footer>
+</body>
+
+</html>

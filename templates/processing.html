@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>NORTH</title>
+
+  <link href="{{ url_for('static', filename='css/materialize.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/all.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/hamburgers.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/Cairo.css') }}" rel="stylesheet">
+
+</head>
+
+<body onload="loaded()" class="bodyProcessing">
+
+  <div class="container">
+
+	<h1 style="margin-top: 40%;font-family: 'Cairo', sans-serif; ">Preparing Your Result
+	  <div style="margin-left:5%" class="preloader-wrapper big active">
+		<div class="spinner-layer spinner-blue">
+		  <div class="circle-clipper left">
+			<div class="circle"></div>
+		  </div>
+		  <div class="gap-patch">
+			<div class="circle"></div>
+		  </div>
+		  <div class="circle-clipper right">
+			<div class="circle"></div>
+		  </div>
+		</div>
+
+		<div class="spinner-layer spinner-red">
+		  <div class="circle-clipper left">
+			<div class="circle"></div>
+		  </div>
+		  <div class="gap-patch">
+			<div class="circle"></div>
+		  </div>
+		  <div class="circle-clipper right">
+			<div class="circle"></div>
+		  </div>
+		</div>
+
+		<div class="spinner-layer spinner-yellow">
+		  <div class="circle-clipper left">
+			<div class="circle"></div>
+		  </div>
+		  <div class="gap-patch">
+			<div class="circle"></div>
+		  </div>
+		  <div class="circle-clipper right">
+			<div class="circle"></div>
+		  </div>
+		</div>
+
+		<div class="spinner-layer spinner-green">
+		  <div class="circle-clipper left">
+			<div class="circle"></div>
+		  </div>
+		  <div class="gap-patch">
+			<div class="circle"></div>
+		  </div>
+		  <div class="circle-clipper right">
+			<div class="circle"></div>
+		  </div>
+		</div>
+	  </div>
+	</h1>
+
+	<div class="progress">
+	  <div class="indeterminate"></div>
+	</div>
+
+
+  </div>
+
+
+  <script>window.$ = window.jQuery = require('jquery');</script>
+  <!--script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script-->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/processing.js') }}"></script>
+
+  <script>
+	function loaded() {
+	  process('{{ seq }}', '{{model}}');
+	}
+  </script>
+
+
+</body>
+
+</html>

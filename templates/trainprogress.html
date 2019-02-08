@@ -1,0 +1,161 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NORTH</title>
+    <link href="{{ url_for('static', filename='css/materialize.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/hamburgers.min.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <!--script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script-->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/trainprogress.js') }}"></script>
+
+
+</head>
+
+<body onload="init('{{model}}',{{K}}, {{nchilds}},'{{details}}', '{{datapath}}', {{save_seq}}, {{train_outlier}} )">
+
+    <h1 style="text-align:center">Training Model : {{model}}</h1>
+
+    <h3 style="text-align:center;visibility:hidden" id="rdclstrhed">Processing Data</h3>
+
+    <div class="row">
+        <div class="col s2" id="rdclstrtit" style="visibility:hidden">Reading Clusters</div>
+        <div class="col s2" id="rdclstrnum" style="visibility:hidden"></div>
+        <div class="col s7" id="rdclstrprgw" style="visibility:hidden">
+            <div class="progress">
+                <div id="rdclstrprg" class="determinate" style="width: 0%"></div>
+            </div>
+        </div>
+        <div class="col s1" id="rdclstrprcnt" style="visibility:hidden">0%</div>
+
+        <div class="col s2" id="rdgenetit" style="visibility:hidden">Reading Genes</div>
+        <div class="col s2" id="rdgenenum" style="visibility:hidden"></div>
+        <div class="col s7" id="rdgeneprgw" style="visibility:hidden">
+            <div class="progress">
+                <div id="rdgeneprg" class="determinate" style="width: 0%"></div>
+            </div>
+        </div>
+        <div class="col s1" id="rdgeneprcnt" style="visibility:hidden">0%</div>
+
+
+    </div>
+
+
+    <h3 style="text-align:center;visibility:hidden" id="trainhed">Training Naive Bayes Model</h3>
+
+    <div class="row">
+        <div class="col s2" id="trnclstrtit" style="visibility:hidden">Processing Clusters</div>
+        <div class="col s2" id="trnclstrnum" style="visibility:hidden"></div>
+        <div class="col s7" id="trnclstrprgw" style="visibility:hidden">
+            <div class="progress">
+                <div id="trnclstrprg" class="determinate" style="width: 0%"></div>
+            </div>
+        </div>
+        <div class="col s1" id="trnclstrprcnt" style="visibility:hidden">0%</div>
+
+        <div class="col s2" id="trngenetit" style="visibility:hidden">Processing Genes</div>
+        <div class="col s2" id="trngenenum" style="visibility:hidden"></div>
+        <div class="col s7" id="trngeneprgw" style="visibility:hidden">
+            <div class="progress">
+                <div id="trngeneprg" class="determinate" style="width: 0%"></div>
+            </div>
+        </div>
+        <div class="col s1" id="trngeneprcnt" style="visibility:hidden">0%</div>
+
+
+    </div>
+
+    <h3 style="text-align:center;visibility:hidden" id="outlierhed">Training Outlier Detection Model</h3>
+
+    <div class="row">
+        <div class="col s2" id="outprbtit" style="visibility:hidden">Analyzing Probabilities</div>
+        <div class="col s2" id="outprbnum" style="visibility:hidden"></div>
+        <div class="col s7" id="outprbprgw" style="visibility:hidden">
+            <div class="progress">
+                <div id="outprbprg" class="determinate" style="width: 0%"></div>
+            </div>
+        </div>
+        <div class="col s1" id="outprbprcnt" style="visibility:hidden">0%</div>
+
+        <div class="col s2" id="outftrtit" style="visibility:hidden">Extracting Features</div>
+        <div class="col s2" id="outftrnum" style="visibility:hidden"></div>
+        <div class="col s7" id="outftrprgw" style="visibility:hidden">
+            <div class="progress">
+                <div id="outftrprg" class="determinate" style="width: 0%"></div>
+            </div>
+        </div>
+        <div class="col s1" id="outftrprcnt" style="visibility:hidden">0%</div>
+
+        <div class="col s2" id="rftit" style="visibility:hidden">Training Random Forest</div>
+        <div class="col s2" id="rfnum" style="visibility:hidden"></div>
+        <div class="col s7" id="rfprgw" style="visibility:hidden">
+            <div class="progress">
+                <div class="indeterminate"></div>
+            </div>
+        </div>
+    </div>
+
+    <h3 style="text-align:center;visibility:hidden" id="donehed">
+        Training Completed
+        <div class="preloader-wrapper small active">
+            <div class="spinner-layer spinner-blue">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+
+            <div class="spinner-layer spinner-red">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+
+            <div class="spinner-layer spinner-yellow">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+
+            <div class="spinner-layer spinner-green">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </h3>
+
+</body>
+
+</html>

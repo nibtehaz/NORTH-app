@@ -1,0 +1,31 @@
+{
+  "name": "NORTH",
+  "version": "1.0.0",
+  "description": "native desktop app for NORTH",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "package-linux": "electron-packager . NORTH --overwrite  --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds"
+  },
+  "keywords": [
+    "bioinformatics",
+    "comparative",
+    "genomics",
+    "orthologs",
+    "paralogs"
+  ],
+  "author": "Nabil Ibtehaz",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^4.0.1",
+    "electron-packager": "^13.0.1"
+  },
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "express": "^4.16.4",
+    "jquery": "^3.3.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  }
+}
