@@ -4,15 +4,11 @@ from sklearn.model_selection import train_test_split, StratifiedKFold
 from sklearn.ensemble.forest import RandomForestClassifier
 import os
 import pickle
-from tqdm import tqdm
 from ScalableNaiveBayes import NaiveBayesChild, breakIntoKmer
 from Bio import SeqIO
 from scipy.stats import kurtosis, skew
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-sns.set()
 
 np.random.seed(3)
 
